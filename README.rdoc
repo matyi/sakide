@@ -1,0 +1,35 @@
+= SAKIDE
+
+SAKIDE encryption modul for CIB bank credit card payments
+
+== You will need
+
+* A working Ruby installation (>= 1.8.6 or 1.9)
+* A working libmcrypt installation (2.5.x or 2.6.x, tested with 2.5.8)
+* A sane build environment
+
+== Installation
+
+Install the gem:
+  gem install sakide
+
+Put this in your code:
+  require 'sakide'
+
+Or in Gemfile:
+  gem "sakide"
+
+== Usage
+
+  saki = Sakide.new "/path/to/key/file.des"
+  
+  cleartext = "PID=IEB0001&CRYPTO=1&MSGT=10&TRID=1234123412341234&UID=IEB00000001&LANG=HU&TS=19700101000000&AUTH=0&AMO=10000&URL=http://localhost/"
+  
+  crypto = saki.encode(cleartext);
+  
+  cleartext2 = saki.decode(crypto)
+
+
+== Author
+
+* Matyas Juhasz <juhasz.matyas at pixelface.hu>
